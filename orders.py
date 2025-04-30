@@ -1,5 +1,4 @@
 import requests
-from datetime import date
 from title import scrape_title 
 from slugify import slugify 
 
@@ -68,16 +67,3 @@ def get_executive_order_links(target_date_str):
     except KeyError:
         print("Unexpected response format from the API.")
         return []
-
-def format_date(date_obj):
-    return date_obj.strftime('%Y-%m-%d')
-
-if __name__ == "__main__":
-    search_date = date.today().strftime('%Y-%m-%d')
-    executive_order_urls = get_executive_order_links(search_date)
-    if executive_order_urls:
-        print(f"URLs of executive orders published on {search_date}:")
-        for url in executive_order_urls:
-            print(url)
-    else:
-        print(f"No executive orders found for {search_date}.")
